@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD KAHMI BOLSEL - Majelis Daerah
+        Korps Alumni Himpunan Mahasiswa Islam
+        Bolaang Mongondow Selatan</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0a4d2e;
+            --secondary-color: #000000;
+            --accent-color: #1a7a4e;
+            --light-color: #f8f9fa;
+            --text-color: #333333;
+            --font-primary: 'Poppins', sans-serif;
+            --font-islamic: 'IMPACT', serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(10, 77, 46, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 30px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(10, 77, 46, 0.7)), url("asset/img/111.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hero-logo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .hero-title {
+            font-family: var(--font-islamic);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .hero-slogan {
+            font-family: var(--font-islamic);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 20px;
+            color: #f0f0f0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: var(--font-islamic);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .vision-mission {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .vision-mission h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-family: var(--font-islamic);
+            font-size: 1.8rem;
+        }
+        
+        .vision-mission ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .vision-mission li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .vision-mission li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        /* News Section */
+        .news-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .news-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .news-link {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .news-link:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Programs Section */
+        .programs {
+            background-color: var(--light-color);
+        }
+        
+        .program-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .program-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.3s ease;
+        }
+        
+        .program-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .program-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .program-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Members Section */
+        .members-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .members-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .member-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-image {
+            height: 200px;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .member-image i {
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+        
+        .member-role {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .member-contact {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .member-contact a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .member-contact a:hover {
+            color: var(--accent-color);
+        }
+        
+        .add-member-form {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .add-member-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-family: var(--font-islamic);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-color);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-family: var(--font-islamic);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-text p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-family: var(--font-islamic);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-logo span {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .footer-text {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-slogan {
+                font-size: 1.5rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .news-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .members-list {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src= "asset/img/MD KAHMI LOGO.png" alt="MD KAHMI BOLSEL Logo">
+                <span>MD KAHMI BOLSEL</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#home" class="nav-link">Beranda</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Tentang</a></li>
+                <li class="nav-item"><a href="#news" class="nav-link">Berita</a></li>
+                <li class="nav-item"><a href="#programs" class="nav-link">Program</a></li>
+                <li class="nav-item"><a href="#members" class="nav-link">Pengurus</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-logo" data-aos="fade-up" data-aos-duration="1000">
+            <img src="asset/img/asas.png" alt="MD KAHMI BOLSEL Logo">
+        </div>
+        <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">MD KAHMI BOLSEL</h1>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Majelis Daerah Korps Alumni Himpunan Mahasiswa Islam Bolaang Mongondow Selatan</p>
+        <p class="hero-slogan" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">"Yakin Usaha Sampai"</p>
+        <div class="scroll-indicator" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Tentang Organisasi</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Sejarah Singkat</h3>
+                    <p>KAHMI (Korps Alumni Himpunan Mahasiswa Islam)
+didirikan pada 17 September 1966 di Solo, Jawa Tengah, melalui Musyawarah Nasional (Munas) Alumni HMI yang bersamaan dengan Kongres VIII HMI. Organisasi ini terbentuk sebagai wadah kekeluargaan bagi para alumni HMI yang sudah berkiprah di berbagai sektor kehidupan. Awalnya merupakan badan khusus HMI, KAHMI kemudian resmi menjadi organisasi mandiri setelah memutus hubungan organisatoris dengan HMI pada tahun 1987.</p>
+                </div>
+                <div class="vision-mission" data-aos="fade-left">
+                    <h3>Visi & Misi</h3>
+                    <h4>Visi:</h4>
+                    <ul>
+                        <li>Menjadi organisasi alumni yang unggul, inovatif, dan berkontribusi nyata bagi pembangunan daerah dan bangsa.</li>
+                    </ul>
+                    <h4>Misi:</h4>
+                    <ul>
+                        <li>Menjalin dan memperkuat silaturahmi antar alumni HMI di Bolaang Mongondow Selatan.</li>
+                        <li>Meningkatkan kapasitas dan kompetensi kader melalui berbagai pelatihan dan pendidikan.</li>
+                        <li>Berpartisipasi aktif dalam pembangunan daerah melalui program-program pemberdayaan masyarakat.</li>
+                        <li>Menjadi referensi dalam pengembangan sumber daya manusia yang berlandaskan nilai-nilai Islam.</li>
+                        <li>Mendorong terwujudnya tatanan masyarakat yang adil, makmur, dan berkeadilan sosial.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section news" id="news">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Berita Terbaru</h2>
+            </div>
+            <div class="news-cards">
+                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-image">
+                        <img src="asset/img/111.png" alt="Berita 1">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">25 Oktober 2025</div>
+                        <h3 class="news-title">Pelantikan Pengurus MD KAHMI BOLSEL Periode 2025-2030</h3>
+                        <p class="news-excerpt">Musyawarah Daerah (Musda) Majelis Daerah (MD) Korps Alumni Himpunan Mahasiswa Islam (KAHMI) Kabupaten Bolaang Mongondow Selatan (Bolsel) berlangsung sukses dan penuh khidmat.
+
+Kegiatan yang digelar di Wisata Pantai Tersakiti Desa Pinolantungan Kecamatan Bolaang Uki ini dihadiri para alumni HMI lintas generasi, OKP dan OKPI, tokoh masyarakat, dan tamu undangan resmi. Sabtu, (25/10/2025...</p>
+                        <a href="#" class="news-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-image">
+                        <img src="asset/img/IMG_7101-1-1536x1152.jpeg" alt="Berita 2">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">25 Oktober 2025</div>
+                        <h3 class="news-title">Penyerahan Sembako Gratis Kepada Masyarakat</h3>
+                        <p class="news-excerpt">Di tengah upaya pemerintah pusat di bawah kepemimpinan Presiden Prabowo Subianto yang terus memperkuat program penyangga ekonomi masyarakat.
+
+Langkah nyata kepedulian sosial juga ditunjukkan oleh Korps Alumni Himpunan Mahasiswa Islam (KAHMI) Kabupaten Bolaang Mongondow Selatan (Bolsel).
+
+Di mana,  Majelis Daerah (MD) KAHMI BOLSEL menyalurkan bantuan sembako kepada masyarakat sekitar sebagai bentuk dukungan terhadap upaya penguatan ekonomi rakyat...</p>
+                        <a href="#" class="news-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-image">
+                        <img src="asset/img/ID CARD KAHMI.png" alt="Berita 3">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">25 Oktober 2025</div>
+                        <h3 class="news-title">MD KAHMI BOLSEL Siap Merilis KTA KAHMI BOLSEL</h3>
+                        <p class="news-excerpt">Bolaang Mongondow Selatan — Majelis Daerah Korps Alumni Himpunan Mahasiswa Islam (MD KAHMI) Kabupaten Bolaang Mongondow Selatan bersiap meluncurkan Kartu Tanda Anggota (KTA) KAHMI BOLSEL sebagai bagian dari upaya digitalisasi dan penguatan basis data alumni HMI di daerah.
+
+Korpres MD KAHMI Bolsel, Eus Daud, menjelaskan bahwa penerbitan KTA ini merupakan langkah penting dalam memperkuat konsolidasi internal dan meningkatkan profesionalitas organisasi.
+
+“KTA ini bukan hanya sekadar kartu identitas, tetapi juga simbol keanggotaan dan komitmen kita untuk berkontribusi bagi kemajuan daerah melalui nilai-nilai keislaman dan keindonesiaan,” ujarnya....</p>
+                        <a href="#" class="news-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs" id="programs">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Program Kerja</h2>
+            </div>
+            <div class="program-list">
+                <div class="program-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Pendidikan dan Kaderisasi</h3>
+                        <p>Pengembangan kapasitas kader melalui pelatihan, seminar, dan workshop untuk meningkatkan kompetensi dalam berbagai bidang.</p>
+                    </div>
+                </div>
+                <div class="program-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Pemberdayaan Masyarakat</h3>
+                        <p>Program pemberdayaan ekonomi masyarakat melalui pelatihan kewirausahaan, bantuan modal usaha, dan pendampingan UMKM.</p>
+                    </div>
+                </div>
+                <div class="program-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Studi dan Riset</h3>
+                        <p>Pengkajian isu-isu strategis daerah dan nasional serta pengembangan solusi berbasis riset untuk mendukung pembangunan.</p>
+                    </div>
+                </div>
+                <div class="program-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="program-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Syiar Islam</h3>
+                        <p>Kegiatan keagamaan seperti pengajian rutin, peringatan hari besar Islam, dan pembinaan spiritual bagi anggota dan masyarakat.</p>
+                    </div>
+                </div>
+                <div class="program-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="program-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Konsolidasi Organisasi</h3>
+                        <p>Penguatan struktur organisasi, peningkatan kualitas pengurus, dan pengembangan jaringan dengan organisasi lain.</p>
+                    </div>
+                </div>
+                <div class="program-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="program-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Kerjasama dan Kemitraan</h3>
+                        <p>Pembangunan jaringan kerjasama dengan pemerintah, swasta, dan organisasi kemasyarakatan untuk program-program bersama.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section class="section members" id="members">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Pengurus Majelis Daerah</h2>
+            </div>
+            <div class="members-container">
+                <div class="members-list" id="membersList">
+                    <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4 class="member-name">Eus Daud</h4>
+                            <p class="member-role">Koordinator Presidium</p>
+                            <div class="member-contact">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4 class="member-name">Abidin Patilima</h4>
+                            <p class="member-role">Presidium</p>
+                            <div class="member-contact">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4 class="member-name">Arthur Waroka</h4>
+                            <p class="member-role">Presidium</p>
+                            <div class="member-contact">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="member-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-info">
+                            <h4 class="member-name">Kasman Djauhari</h4>
+                            <p class="member-role">Presidium</p>
+                            <div class="member-contact">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="add-member-form" data-aos="fade-up">
+                    <h3>Tambah Anggota Baru</h3>
+                    <form id="addMemberForm">
+                        <div class="form-group">
+                            <label for="memberName">Nama Lengkap</label>
+                            <input type="text" id="memberName" class="form-control" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberRole">Jabatan/Peran</label>
+                            <input type="text" id="memberRole" class="form-control" placeholder="Masukkan jabatan atau peran" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberEmail">Email</label>
+                            <input type="email" id="memberEmail" class="form-control" placeholder="Masukkan email">
+                        </div>
+                        <div class="form-group">
+                            <label for="memberPhone">Nomor Telepon</label>
+                            <input type="tel" id="memberPhone" class="form-control" placeholder="Masukkan nomor telepon">
+                        </div>
+                        <button type="submit" class="btn">Tambah Anggota</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Hubungi Kami</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Alamat Sekretariat</h4>
+                            <p>Jl. Pendidikan No. 15, Kec. Bolaang Uki, Kab. Bolaang Mongondow Selatan, Sulawesi Utara 95754</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telepon</h4>
+                            <p>(0434) 123456</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@mdkahmibolsel.or.id</p>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7434234175!2d123.84541731475395!3d0.5988960996405143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x327d3f4c4f4f4f4f%3A0x4f4f4f4f4f4f4f4f!2sBolaang%20Mongondow%20Selatan%2C%20Sulawesi%20Utara!5e0!3m2!1sen!2sid!4v1628765432109" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Formulir Kontak</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Nama</label>
+                            <input type="text" id="contactName" class="form-control" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" class="form-control" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subjek</label>
+                            <input type="text" id="contactSubject" class="form-control" placeholder="Masukkan subjek pesan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Pesan</label>
+                            <textarea id="contactMessage" class="form-control" rows="5" placeholder="Tulis pesan Anda" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="asset/img/MD KAHMI LOGO.png" alt="MD KAHMI BOLSEL Logo">
+                        <span>MD KAHMI BOLSEL</span>
+                    </div>
+                    <p class="footer-text">Majelis Daerah Korps Alumni Himpunan Mahasiswa Islam Bolaang Mongondow Selatan</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Link Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#news">Berita</a></li>
+                        <li><a href="#programs">Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="#">Struktur Organisasi</a></li>
+                        <li><a href="#">AD/ART</a></li>
+                        <li><a href="#">Galeri</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 15, Bolsel</li>
+                        <li><i class="fas fa-phone"></i> (0434) 123456</li>
+                        <li><i class="fas fa-envelope"></i> info@mdkahmibolsel.or.id</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MD KAHMI BOLSEL. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add member form
+        const addMemberForm = document.getElementById('addMemberForm');
+        const membersList = document.getElementById('membersList');
+        
+        addMemberForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('memberName').value;
+            const role = document.getElementById('memberRole').value;
+            const email = document.getElementById('memberEmail').value;
+            const phone = document.getElementById('memberPhone').value;
+            
+            // Create new member card
+            const newMember = document.createElement('div');
+            newMember.className = 'member-card';
+            newMember.setAttribute('data-aos', 'fade-up');
+            
+            newMember.innerHTML = `
+                <div class="member-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="member-info">
+                    <h4 class="member-name">${name}</h4>
+                    <p class="member-role">${role}</p>
+                    <div class="member-contact">
+                        <a href="mailto:${email}"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:${phone}"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            `;
+            
+            membersList.appendChild(newMember);
+            
+            // Reinitialize AOS for new element
+            AOS.refresh();
+            
+            // Reset form
+            addMemberForm.reset();
+            
+            // Show toast notification
+            showToast('Anggota berhasil ditambahkan!');
+        });
+
+        // Contact form
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // Here you would normally send the data to a server
+            console.log({ name, email, subject, message });
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Show toast notification
+            showToast('Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.');
+        });
+
+        // Toast notification function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
