@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Admin MD KAHMI BOLSEL</title>
+  <style>
+    body{font-family:sans-serif;margin:0;padding:0;background:#f5f5f5}
+    header{background:#0a4d2e;color:#fff;padding:15px;text-align:center}
+    .container{max-width:1000px;margin:20px auto;padding:0 15px}
+    table{border-collapse:collapse;width:100%;margin:20px 0;background:#fff}
+    th,td{border:1px solid #ccc;padding:10px;text-align:left;vertical-align:middle}
+    th{background:#0a4d2e;color:#fff}
+    img{width:40px;height:40px;border-radius:50%}
+    .btn-wa{background:#25d366;color:#fff;padding:6px 10px;border-radius:5px;text-decoration:none;display:inline-block}
+    .btn-logout{background:#e11d48;color:#fff;padding:6px 10px;border-radius:5px;text-decoration:none;display:inline-block;margin-left:8px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div><h2 style="margin:0">Dashboard Admin MD KAHMI BOLSEL</h2></div>
+      <div>
+        <span id="adminEmailDisplay"></span>
+        <a href="#" id="logoutAdmin" class="btn-logout">Logout</a>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <table id="userTable">
+      <thead>
+        <tr><th>Foto</th><th>Nama</th><th>Email</th><th>Waktu Login</th><th>Kontak WA</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p style="color:#666">Catatan: Untuk menampilkan nomor WA, Anda dapat mengedit kolom <b>Phone</b> di Google Sheets yang tersambung.</p>
+  </div>
+
+  <script>
+  const ADMIN_EMAIL = "ADMIN_EMAIL_HERE"; // replace
+  const SCRIPT_URL = "YOUR_SCRIPT_URL_HERE"; // replace with Apps Script web app URL
+
+  // Simple admin check: if ADMIN_EMAIL not set, allow to view (developer mode)
+  async function loadUsers(){
+    if (!SCRIPT_URL || SCRIPT_URL.includes("YOUR_SCRIPT_URL_HERE")) {
+      document.querySelector("#userTable tbody").innerHTML = '<tr><td colspan="5">SCRIPT_URL belum disetel. Silakan edit file admin.html dan ganti placeholder SCRIPT_URL dengan URL web app Apps Script Anda.</td></tr>';
+      return;
+    }
+    try {
+      const res = await fetch(SCRIPT_URL + '?mode=read');
+      const data = await res.json();
+      const tbody=document.querySelector("#userTable tbody");
+      tbody.innerHTML = '';
+      data.forEach(u=>{
+        const tr=document.createElement('tr');
+        const waNumber = (u.phone||'').replace(/[^0-9]/g, '');
+        tr.innerHTML = `
+          <td><img src="${u.picture||''}" alt="foto"></td>
+          <td>${u.name||''}</td>
+          <td>${u.email||''}</td>
+          <td>${u.time||''}</td>
+          <td>${ waNumber ? '<a class="btn-wa" target="_blank" href="https://wa.me/'+waNumber+'">WhatsApp</a>' : '-' }</td>
+        `;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('adminEmailDisplay').textContent = ADMIN_EMAIL || '';
+    } catch (e) {
+      console.error(e);
+      document.querySelector("#userTable tbody").innerHTML = '<tr><td colspan="5">Gagal memuat data. Periksa SCRIPT_URL dan izin Apps Script.</td></tr>';
+    }
+  }
+
+  document.getElementById('logoutAdmin').addEventListener('click', (e)=>{
+    e.preventDefault();
+    // Simple logout: redirect to homepage
+    window.location.href = 'index_with_login.html';
+  });
+
+  // Load on start
+  loadUsers();
+  </script>
+</body>
+</html>
