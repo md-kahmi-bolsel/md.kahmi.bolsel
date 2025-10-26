@@ -1370,7 +1370,7 @@ function handleCredentialResponse(response) {
     showUserInNavbar(data);
 
     // Send to Apps Script to store in Google Sheet
-    if (!SCRIPT_URL || SCRIPT_URL.includes("YOUR_SCRIPT_URL_HERE")) {
+    if (!SCRIPT_URL || SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbx4-IsXFAPVgu2BkIbZKx7RRnyRXIRBFarw56R0AzkPqycUCqXMhxYPbmpRJAYtPXsNqw/exec")) {
       console.warn("SCRIPT_URL is not set. Data will not be saved to Google Sheet.");
       alert("Login sukses (demo). Silakan konfigurasi SCRIPT_URL di file HTML agar data tersimpan.");
       return;
